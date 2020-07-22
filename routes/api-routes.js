@@ -2,14 +2,6 @@ const db = require("../models");
 
 module.exports = function (app) {
   //GET - renders the project cards with the project and user information via handlebars
-  app.get("/:userid", (req, res) => {
-    db.Project.findAll({
-      raw: true,
-      include: [db.User],
-    }).then((data) => {
-      res.render("index", { userId: req.params.userid, projects: data });
-    });
-  });
 
   app.get("/profile", (req, res) => {
     db.Project.findAll({
@@ -18,6 +10,15 @@ module.exports = function (app) {
     }).then((data) => {
       console.log("MY PROFILE");
       res.render("profile", { userId: req.params.userid, projects: data });
+    });
+  });
+
+  app.get("/:userid", (req, res) => {
+    db.Project.findAll({
+      raw: true,
+      include: [db.User],
+    }).then((data) => {
+      res.render("index", { userId: req.params.userid, projects: data });
     });
   });
 

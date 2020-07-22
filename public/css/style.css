@@ -166,3 +166,9 @@ h2 a:hover {
   text-align: center;
   background-color: var(--main-bg);
 }
+
+/* My profile page */
+.profile-heading {
+  color: white;
+  font-weight: bold;
+}
