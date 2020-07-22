@@ -27,7 +27,18 @@
 </head>
 
 <body>
-    {{{ body }}}
+    {{> navbar}}
+
+    <main class="container">
+        {{{ body }}}
+    </main>
+
+    {{> footer}}
 </body>
+
+{{!-------script to store the userid in localstorage---------}}
+<script>
+    localStorage.setItem("codeConnectId", {{ userId }})
+</script>
 
 </html>

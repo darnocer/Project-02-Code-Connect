@@ -11,6 +11,16 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/profile", (req, res) => {
+    db.Project.findAll({
+      raw: true,
+      include: [db.User],
+    }).then((data) => {
+      console.log("MY PROFILE");
+      res.render("profile", { userId: req.params.userid, projects: data });
+    });
+  });
+
   // GET - returns all authenticated users
   app.get("/api/users", (req, res) => {
     db.User.findAll({}).then((dbUser) => {
