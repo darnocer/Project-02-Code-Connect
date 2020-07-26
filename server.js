@@ -3,12 +3,16 @@ const express = require("express");
 const GitHubStrategy = require("passport-github").Strategy;
 const passport = require("passport");
 const db = require("./models");
+const compression = require('compression');
 
 // Set PORT
 const PORT = process.env.PORT || 3000;
 
 // Set Express App
 const app = express();
+
+app.use(compression());
+
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
